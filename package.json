@@ -1,20 +1,23 @@
 {
-  "name": "react-three-book",
   "version": "0.1.0",
-  "private": true,
+  "name": "react-three-book",
+  "main": "main.js",
+  "module": "module.es.js",
+  "private": false,
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
+    "drei": "0.0.51",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "react-three-fiber": "^4.2.7",
+    "three": "^0.117.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject",
+    "start": "cross-env NODE_ENV=development BABEL_ENV=development react-app-rewired start",
+    "build": "cross-env NODE_ENV=production  BABEL_ENV=production  react-app-rewired build",
+    "compile": "cross-env NODE_ENV=production  BABEL_ENV=production  rollup -c config/rollup.config.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -30,5 +33,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "cross-env": "^7.0.2",
+    "react-app-rewired": "^2.1.6",
+    "rollup": "^2.11.2",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-replace": "^2.2.0"
   }
 }
