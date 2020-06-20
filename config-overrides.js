@@ -6,6 +6,7 @@ module.exports = {
     paths: function(paths, env) {
         paths.appSrc     = resolveApp('.');
         paths.appIndexJs = resolveApp('docs/index.js');
+        //paths.appTypeDeclarations = resolveApp('client/react-app-env.d.ts');
         return paths;
     }
 }

@@ -1,34 +1,36 @@
-import React, { useRef, Fragment, useMemo, useEffect } from 'react'
+import * as THREE from 'three'
+import * as CANNON from 'cannon'
 import ReactDOM from 'react-dom'
-import { Canvas, useFrame, useThree, useResource } from 'react-three-fiber/css3d'
-import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer'
+import React, { useEffect, useState } from 'react'
+import { Canvas, useThree } from 'react-three-fiber'
+import { useDrag } from "react-use-gesture";
 import './styles.css'
-import { Book, createBook} from '../src'
+import { Box, Plane, Rig, useYScroll } from '../src'
+import { Physics } from 'use-cannon'
 
-const Box = React.forwardRef((props,ref) => {
+function App() {
+    const [positions, set] = useState([[1, 0, 1],[1, 1, 5],[0, 0, 6],[-1, 1, 8],[-1, 1, 10],[1, -1, 10]])
+    const [y] = useYScroll({ speed:0.1, domTarget: window })
     return (
-        <mesh {...props} ref={ref}>
-            <boxBufferGeometry    attach="geometry" args={[1, 1, 1]} />
-            <meshStandardMaterial attach="material" />
-        </mesh>
-    )
-})
-
-const World = () => {
-    const [ref,target] = useResource(null)
-    const group = useRef()
-    return (
-        <Fragment>
-            <Canvas camera={{ position: [0, 0, 15] }}>
-                <mesh ref={ref}>
-                    <boxBufferGeometry    attach="geometry" args={[1, 1, 1]} />
-                    <meshStandardMaterial attach="material" />
-                </mesh>
-                <group ref={group}/>
-                <Book position={[0,0,-100]} rotation={[0,0,0]} scale={[0.1,0.1,0.1]}/>
+        <div className="main" onDoubleClick={()=>set(pre=>pre)}>
+            <Canvas shadowMap
+            onCreated={({ gl }) => {
+                gl.toneMapping = THREE.ACESFilmicToneMapping
+                gl.outputEncoding = THREE.sRGBEncoding
+            }}>
+                <pointLight position={[-10, -10, 30]} intensity={0.25} />
+                <spotLight intensity={0.3} position={[30, 30, 50]} angle={0.2} penumbra={1} castShadow />
+                <Physics iterations={10} tolerance={0.0001} gravity={[0,0,-25]} >
+                    <Plane position={[0, 0, -10]} mass={0}/>
+                    <Rig position={[0,0,-10]} y={y}>
+                        {positions.map( (position,key) =>
+                            <Box {...{key, position}} scale={[6, 9, 1]} mass={10000}/>
+                        )}
+                    </Rig>
+                </Physics>
+                <axesHelper scale={[1,1,1]}/>
             </Canvas>
-        </Fragment>
+        </div>
     )
 }
-
-ReactDOM.render(<World />, document.getElementById('root'))
+ReactDOM.render(<App />, document.getElementById('root'))

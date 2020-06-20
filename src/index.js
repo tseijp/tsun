@@ -1,9 +1,3 @@
-import Book from './components/Book'
-import useBook from './hooks/useBook'
-import createBook from './hooks/createBook'
-//import UseCamera from 'hooks/useCamera'
-export {
-    Book,
-    useBook,
-    createBook,
-}
+export * from './components'
+export * from './hooks'
+export * from './meshs'
