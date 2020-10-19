@@ -1,26 +1,33 @@
 {
-  "version": "0.1.0",
-  "name": "react-three-book",
-  "main": "main.js",
-  "module": "module.es.js",
+  "name": "@tsei/core",
+  "homepage": "/",
+  "version": "0.5.4",
+  "module": "index.js",
+  "types": "index.d.ts",
+  "main": "index.cjs.js",
+  "author": "tsei",
+  "license": "MIT",
   "private": false,
-  "dependencies": {
-    "cannon": "^0.6.2",
-    "drei": "0.0.51",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-spring": "^8.0.27",
-    "react-three-fiber": "^4.2.7",
-    "react-use-gesture": "^7.0.15",
-    "three": "^0.117.0",
-    "use-cannon": "^0.4.9"
-  },
+  "sideEffects": false,
+  "description": "🌌Fantastic UI in tsei.jp",
+  "repository": "COMING SOON",
+  "bugs": "COMING SOON",
+  "keywords": [
+    "react",
+    "motion",
+    "gesture",
+    "animation",
+    "typescript",
+    "material-ui",
+    "material design"
+  ],
   "scripts": {
     "test": "react-app-rewired test",
+    "jest": "jest -c config-jest.js --watch --coverage --runInBand",
     "eject": "react-app-rewired eject",
     "start": "cross-env NODE_ENV=development BABEL_ENV=development react-app-rewired start",
-    "build": "cross-env NODE_ENV=production  BABEL_ENV=production  react-app-rewired build",
-    "compile": "cross-env NODE_ENV=production  BABEL_ENV=production  rollup -c config/rollup.config.js"
+    "build": "cross-env NODE_ENV=production BABEL_ENV=production react-app-rewired build",
+    "compile": "cross-env NODE_ENV=production BABEL_ENV=production rollup -c config-rollup.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -36,18 +43,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "cross-env": "^7.0.2",
-    "react-app-rewired": "^2.1.6",
-    "react-scripts": "3.4.1",
-    "rollup": "^2.11.2",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-replace": "^2.2.0"
   }
 }
