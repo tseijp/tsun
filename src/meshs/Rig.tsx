@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 import React, { useRef } from 'react'
 import { useThree, useFrame } from 'react-three-fiber'
-export function Rig ({y, position=[0,0,0], radius=[10,10],  lookAt, distance=1, children}) {
+export function Rig ({y, position=[0,0,0], radius=[10,10],  lookAt, distance=1, children}: any) {
     const group = useRef()
     const {camera} = useThree()
     useFrame(()=>{
