@@ -1,6 +1,5 @@
 import * as THREE from 'three'
-import * as CANNON from 'cannon'
-import React, { useEffect, useState, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { useHTML } from '../hooks'
 import { useBox } from 'use-cannon'
 //import {useFrame} from 'react-three-fiber'

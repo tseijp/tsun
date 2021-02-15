@@ -26,10 +26,10 @@
         "compile": "cross-env NODE_ENV=production BABEL_ENV=production rollup -c config-rollup.js"
     },
     "peerDependencies": {
-        "three": "^0.123.0",
         "react": ">=16.8",
         "react-dom": ">=16.8",
-        "react-three-fiber": "^5.3.3"
+        "react-three-fiber": "*",
+        "three": "*"
     },
     "dependencies": {},
     "devDependencies": {
@@ -48,6 +48,7 @@
         "@types/react-dom": "^16.9.8",
         "@types/react-router-dom": "^5.1.5",
         "@types/react-test-renderer": "^16.9.3",
+        "@types/styled-components": "^5.1.7",
         "cannon": "^0.6.2",
         "cross-env": "^7.0.2",
         "drei": "^2.2.10",
@@ -57,7 +58,7 @@
         "react-app-rewired": "^2.1.6",
         "react-dom": "^16.14.0",
         "react-helmet-async": "^1.0.6",
-        "react-mol": "^1.4.3",
+        "react-mol": "^2.1.0",
         "react-scripts": "3.4.1",
         "react-spring": "^9.0.0-rc.3",
         "react-test-renderer": "^16.9.0",

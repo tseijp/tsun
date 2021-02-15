@@ -1,6 +1,4 @@
-import * as CANNON from 'cannon'
-import React, { useEffect, useState } from 'react'
-import { Canvas } from 'react-three-fiber'
+import React from 'react'
 //import { useCannon } from '../hooks'
 import { usePlane } from 'use-cannon'
 export function Plane({ position, size=[100, 100], ...props }: any) {

@@ -11,6 +11,6 @@ export function useHTML (getChild: any, id='root') {
         target.prepend(el)//.appendChild(el)
         void ReactDOM.render(getChild(), el)
         return () => void ReactDOM.unmountComponentAtNode(el)
-    }, [el])
+    }, [el, getChild, id])
     return null
 }
