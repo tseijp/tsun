@@ -8,7 +8,8 @@ export function sign(x: number) {
     if (Math.sign) return Math.sign(x)
     return Number(x > 0) - Number(x < 0) || +x
 }
+
 export function abs(x: number) {
     if (Math.abs) return Math.abs(x)
-    return 0
+    return x > 0? x: -x
 }
