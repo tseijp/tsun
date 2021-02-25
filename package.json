@@ -54,6 +54,7 @@
         "drei": "^2.2.10",
         "fs": "0.0.1-security",
         "jest": "^24.9.0",
+        "jotai": "^0.15.0",
         "react": "^16.14.0",
         "react-app-rewired": "^2.1.6",
         "react-dom": "^16.14.0",
