@@ -1,22 +1,22 @@
 import React from 'react'
 import styled from 'styled-components'
 import {useAtom} from 'jotai'
-import {pagesAtom, entryAtom} from '../src'
+import {timesAtom, entryAtom} from '../src'
 import {Link} from './components'
 
 export function Container ({children}: any) {
-    const [pages] = useAtom(pagesAtom)
+    const [times] = useAtom(timesAtom)
     const [entry] = useAtom(entryAtom)
     return (
         <Wrap>
             <Header>
-                {pages.map((v, i) => <li><Link row={i}>{v}</Link></li>)}
+                {times.map((v, i) => <li key={v}><Link y={i}>{v}</Link></li>)}
             </Header>
             <Main>
                 {children}
             </Main>
             <Footer>
-                {entry.map((v, i) => <li><Link col={i}>{v}</Link></li>)}
+                {entry.map((v, i) => <li key={v}><Link x={i}>{v}</Link></li>)}
             </Footer>
         </Wrap>
     )

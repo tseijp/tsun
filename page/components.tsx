@@ -1,12 +1,12 @@
 import React, {useCallback, MouseEvent} from 'react'
 import {useAtom} from 'jotai'
-import {pathAtom} from '../src'
+import {posAtom} from '../src'
 
-export function Link ({row=-1, col=-1, children}: any) {
-    const [, setPath] = useAtom(pathAtom)
+export function Link ({x=-1, y=-1, children}: any) {
+    const [, setPos] = useAtom(posAtom)
     const onClick = useCallback((e: MouseEvent) => {
-        setPath({col, row})
+        setPos({x, y})
         e.stopPropagation()
-    }, [row, col, setPath])
+    }, [x, y, setPos])
     return <div children={children} onClick={onClick}/>
 }

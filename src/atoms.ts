@@ -5,22 +5,27 @@ export const themeAtom = atom({
     background: "#212121"
 })
 
-// navigation
+// detail
+export const detailAtom = atom(-1)
+
+// select
+export const celAtom = atom(0)
 export const rowAtom = atom(0)
 export const colAtom = atom(0)
-export const pagesAtom = atom(["ToRead", "Reading", "Readed"])
+export const timesAtom = atom(["Readed", "Reading", "ToRead"])
 export const entryAtom = atom(["Business", "Living", "Learn", "Tech"])
 
-export const pathAtom = atom(
-    () => window.location,
-    (get, set, {col=-1, row=-1}) => {
+type Pos = {x: number, y: number}
+export const posAtom = atom<Pos, Pos>(
+    (get) => ({x: get(colAtom), y: get(rowAtom)}),
+    (get, set, {x=-1, y=-1}) => {
         // init col, row
-        if (col < 0) col = get(colAtom); else set(colAtom, col);
-        if (row < 0) row = get(rowAtom); else set(rowAtom, row);
+        if (x < 0) x = get(colAtom); else set(colAtom, x);
+        if (y < 0) y = get(rowAtom); else set(rowAtom, y);
 
         // init path
-        const pathname = ["", get(pagesAtom)[row] ?? "", get(entryAtom)[col] ?? ""]
-        const location = new URL(pathname.join('/'), window.location.href)
+        const pathname = [get(timesAtom)[y], get(entryAtom)[x]].filter(v => v)
+        const location = new URL("/" + pathname.join('/'), window.location.href)
 
         // set history
         if (window.location.pathname !== location.pathname)
