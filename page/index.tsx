@@ -8,8 +8,7 @@ import {App} from './App'
 
 ReactDOM.render(
     <Container>
-        <Canvas
-            onCreated={({gl}: any) => gl.setClearColor("pink")}>
+        <Canvas>
             <ambientLight intensity={.3} />
             <pointLight position={[ 100, 100, 100]} intensity={2.5} />
             <pointLight position={[-100,-100, 100]} intensity={5} />

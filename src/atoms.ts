@@ -1,27 +1,29 @@
 import {atom} from 'jotai'
 
+// style
+export const themeAtom = atom({
+    background: "#212121"
+})
+
+// navigation
 export const rowAtom = atom(0)
 export const colAtom = atom(0)
 export const pagesAtom = atom(["ToRead", "Reading", "Readed"])
 export const entryAtom = atom(["Business", "Living", "Learn", "Tech"])
 
 export const pathAtom = atom(
-    () => window.location,//.filter(v => v),
-    (get, set, args: string) => {
-        // init pathname
-        const location = new URL(args, window.location.href)
-        const pathname = location.pathname.split("/")
+    () => window.location,
+    (get, set, {col=-1, row=-1}) => {
+        // init col, row
+        if (col < 0) col = get(colAtom); else set(colAtom, col);
+        if (row < 0) row = get(rowAtom); else set(rowAtom, row);
 
-        // reset history
+        // init path
+        const pathname = ["", get(pagesAtom)[row] ?? "", get(entryAtom)[col] ?? ""]
+        const location = new URL(pathname.join('/'), window.location.href)
+
+        // set history
         if (window.location.pathname !== location.pathname)
             window.history.pushState(null, "", location.href)
-
-        // reset pages and entry
-        const row = get(pagesAtom).indexOf(pathname[1])
-        const col = get(entryAtom).indexOf(pathname[2])
-        if (get(rowAtom) !== row && row > -1)
-            set(rowAtom, row)
-        if (get(colAtom) !== col && col > -1)
-            set(colAtom, col)
     }
 )
