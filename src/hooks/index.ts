@@ -1,3 +1,5 @@
 export * from './useCamera'
+export * from './useChoice'
 export * from './useBlend'
 export * from './useHTML'
+export * from './useDetail'

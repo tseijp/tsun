@@ -6,7 +6,11 @@ import {useAtom} from 'jotai'
 // import * as THREE from 'three'
 import {
     useCamera,
+    useChoice,
+    useBlend,
+    // useDetail,
     BookTexture,
+    detailAtom,
     entryAtom,
     timesAtom
 } from '../src'
@@ -14,7 +18,11 @@ import {
 export function App () {
     const [times] = useAtom(timesAtom)
     const [entry] = useAtom(entryAtom)
-    const [{x, y}, camera] = useCamera()
+    const [detail] = useAtom(detailAtom)
+    const camera = useCamera()
+    const from = useChoice()
+    // const to = useDetail()
+    const blend = useBlend({weight: detail < 0? 0: 1, from, to: {}})
     const {viewport: {width: vw, height: vh}} = useThree()
     return (
         <Render>
@@ -33,8 +41,8 @@ export function App () {
                 </Brick>
             </group>
             <a.perspectiveCamera ref={camera}
-                position-x={x.to(v => v * vw)}
-                position-z={y.to(v =>-v * vw + 4)}/>
+                position-x={blend.x.to(v => v * vw)}
+                position-z={blend.y.to(v =>-v * vw + 4)}/>
         </Render>
     )
 }

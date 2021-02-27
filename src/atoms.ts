@@ -12,8 +12,8 @@ export const detailAtom = atom(-1)
 export const celAtom = atom(0)
 export const rowAtom = atom(0)
 export const colAtom = atom(0)
-export const timesAtom = atom(["Readed", "Reading", "ToRead"])
-export const entryAtom = atom(["Business", "Living", "Learn", "Tech"])
+export const timesAtom = atom(["readed", "reading", "todo"])
+export const entryAtom = atom(["business", "living", "learn", "tech"])
 
 type Pos = {x: number, y: number}
 export const posAtom = atom<Pos, Pos>(
