@@ -4,8 +4,12 @@ import {animated as a} from 'react-spring/three'
 import {useThree} from 'react-three-fiber'
 import {useAtom} from 'jotai'
 // import * as THREE from 'three'
-import {useCamera, BookTexture} from '../src'
-import {entryAtom, timesAtom} from '../src'
+import {
+    useCamera,
+    BookTexture,
+    entryAtom,
+    timesAtom
+} from '../src'
 
 export function App () {
     const [times] = useAtom(timesAtom)

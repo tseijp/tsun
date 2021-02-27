@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {Canvas} from 'react-three-fiber'
 import './styles.css'
 import {unregister} from './utils';
-import {Container} from './containers'
+import {Container} from '../src'
 import {App} from './App'
 
 ReactDOM.render(
