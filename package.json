@@ -69,7 +69,7 @@
         "react-three-gui": "^0.3.1",
         "react-use-gesture": "^8.0.0-alpha.7",
         "rollup": "^2.23.0",
-        "three": "^0.123.0",
+        "three": "^0.137.0",
         "ts-jest": "^24.3.0",
         "typescript": "^3.8.3",
         "use-cannon": "^0.5.3"
